@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Homepage.style";
 import Logo from "../../assets/images/Tasky.png";
-import MainButton from "../../components/Button/MainButton";
+import MainButton from "../../components/MainButton/MainButton";
 
 const Homepage = () => {
   return (

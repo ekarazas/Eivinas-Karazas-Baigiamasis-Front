@@ -17,6 +17,6 @@ export const MainButton = styled(Link)`
   &:hover {
     background: ${(props) =>
       props.color === "primary" ? "#55dfc8" : "#6955df"};
-    color: #fff;
+    color: #f3f3f3;
   }
 `;

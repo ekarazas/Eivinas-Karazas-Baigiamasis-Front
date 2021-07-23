@@ -9,6 +9,7 @@ const MainButton = ({ to, children, color }) => (
 );
 
 MainButton.propTypes = {
+  to: PropTypes.string,
   direction: PropTypes.string,
   children: PropTypes.string.isRequired,
   color: PropTypes.oneOf(["primary", "secondary"]),

@@ -18,7 +18,6 @@ export const Home = styled.main`
 `;
 
 export const Logo = styled.img`
-  text-align: center;
   height: 25px;
   filter: invert(85%) sepia(100%) saturate(211%) hue-rotate(186deg)
     brightness(112%) contrast(91%);

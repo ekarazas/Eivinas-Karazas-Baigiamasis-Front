@@ -2,11 +2,14 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const StyledLink = styled(NavLink)`
-  color: #000;
+  border-bottom: 0.05rem solid transparent;
+  color: #f3f3f3;
   letter-spacing: 0.02em;
+  font-weight: 200;
   padding: 0.3rem;
   text-decoration: none;
   text-transform: uppercase;
+  transition: 300ms ease;
 
   &:hover {
     border-bottom: 0.05rem solid #f3f3f3;
@@ -14,6 +17,7 @@ export const StyledLink = styled(NavLink)`
 
   &.active {
     color: #55dfc8;
+    font-weight: 400;
   }
 
   &.active:hover {

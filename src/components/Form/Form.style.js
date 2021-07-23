@@ -5,13 +5,16 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  border: 0.05rem solid #55dfc8;
+  background: #eee;
+  border: 0.05rem solid transparent;
+  border-radius: 0.3rem;
   box-sizing: border-box;
   margin-bottom: 1rem;
   padding: 0.5rem;
   outline: none;
   width: 100%;
+
   &:focus {
-    border: 0.05rem solid #6955df;
+    border: 0.05rem solid #55dfc8;
   }
 `;

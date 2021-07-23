@@ -7,7 +7,7 @@ const StyledLink = ({ to, children }) => {
     <>
       <S.StyledLink to={to} activeClassName="active">
         {children}
-      </S.StyledLink>{" "}
+      </S.StyledLink>
     </>
   );
 };

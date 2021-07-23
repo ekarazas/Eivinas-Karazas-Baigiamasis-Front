@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
   color: #000;
   letter-spacing: 0.02em;
   padding: 0.3rem;
@@ -14,8 +14,6 @@ export const StyledLink = styled(Link)`
 
   &.active {
     color: #55dfc8;
-    font-weight: 700;
-    text-shadow: 0 0 1rem #55dfc8;
   }
 
   &.active:hover {

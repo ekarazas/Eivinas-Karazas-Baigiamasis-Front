@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   background: rgba(0, 255, 255, 0.1);
@@ -20,11 +21,15 @@ export const Container = styled.div`
   }
 `;
 
+export const StyledLink = styled(Link)`
+  margin-bottom: 3rem;
+  padding: 0.5rem;
+`;
+
 export const Logo = styled.img`
   height: 25px;
   filter: invert(85%) sepia(100%) saturate(211%) hue-rotate(186deg)
     brightness(112%) contrast(91%);
-  margin-bottom: 3rem;
 
   @media only screen and (min-width: 785px) {
     height: 25px;

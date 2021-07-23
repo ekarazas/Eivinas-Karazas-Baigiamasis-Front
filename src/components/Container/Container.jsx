@@ -8,7 +8,9 @@ const Container = ({ children }) => {
   return (
     <>
       <S.Container>
-        <S.Logo src={Logo} />
+        <S.StyledLink to="/">
+          <S.Logo src={Logo} />
+        </S.StyledLink>
         {children}
       </S.Container>
     </>

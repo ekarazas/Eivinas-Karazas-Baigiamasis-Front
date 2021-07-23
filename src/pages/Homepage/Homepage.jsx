@@ -11,7 +11,7 @@ const Homepage = () => {
         <S.Logo src={Logo} />
         <S.CenteredDiv>
           <S.Title>This is your personal task management tool!</S.Title>
-          <MainButton color="primary" type="button">
+          <MainButton to="/dashboard" color="primary" type="button">
             Get Started
           </MainButton>
         </S.CenteredDiv>

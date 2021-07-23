@@ -9,7 +9,7 @@ export default {
 export const MainButtonStory = () => {
   return (
     <>
-      <MainButton>Get started</MainButton>
+      <MainButton to="/dashboard">Get started</MainButton>
     </>
   );
 };

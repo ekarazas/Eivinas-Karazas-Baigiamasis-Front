@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const Login = styled.main`
+export const Register = styled.main`
   height: calc(100vh - 4rem);
   display: flex;
   justify-content: center;

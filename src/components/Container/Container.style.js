@@ -5,10 +5,19 @@ export const Container = styled.div`
   border-radius: 0.3rem;
   padding: 3.5rem 2.5rem;
   margin: 0 1rem;
+  margin-top: 3rem;
   max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (min-width: 785px) {
+    margin-top: 5rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    margin-top: 12rem;
+  }
 `;
 
 export const Logo = styled.img`

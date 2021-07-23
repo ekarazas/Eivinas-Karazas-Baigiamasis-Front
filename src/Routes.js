@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 
 import Homepage from "./pages/Homepage/Homepage";
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
       </Switch>
       <Footer />
     </Router>

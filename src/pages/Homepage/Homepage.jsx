@@ -1,16 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import * as S from "./Homepage.style";
 import Logo from "../../assets/images/Tasky.png";
 import MainButton from "../../components/MainButton/MainButton";
 
 const Homepage = () => {
-  const history = useHistory();
-
-  if (localStorage.getItem("token")) {
-    history.push("/dashboard");
-  }
-
   return (
     <>
       <S.GlobalStyle />

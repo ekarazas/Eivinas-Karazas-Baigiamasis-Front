@@ -10,10 +10,6 @@ import StyledLink from "../../components/StyledLink/StyledLink";
 const Register = () => {
   const history = useHistory();
 
-  if (localStorage.getItem("token")) {
-    history.push("/dashboard");
-  }
-
   const userValidation = (e) => {
     e.preventDefault();
     const firstname = e.target.elements.firstname.value.trim();

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-
 import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
 import { AuthContext } from "../../contexts/authContext";
 import { useHistory } from "react-router-dom";
@@ -11,11 +10,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     displayHeaderContext.setDisplay(true);
-  });
+  }, [displayHeaderContext]);
 
-  if (!authContext.loggedIn) {
-    history.push("/login");
-  }
+  useEffect(() => {
+    if (!authContext.loggedInLoading && !authContext.loggedIn) {
+      history.push("/login");
+    }
+  }, [authContext.loggedIn, authContext.loggedInLoading, history]);
 
   return (
     <>

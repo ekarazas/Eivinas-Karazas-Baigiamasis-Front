@@ -6,7 +6,6 @@ import { SidebarData } from "./SidebarData";
 import { IconContext } from "react-icons";
 import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
 import { AuthContext } from "../../contexts/authContext";
-import { useHistory } from "react-router-dom";
 
 import Logo from "../../assets/images/Tasky.png";
 import Button from "../Button/Button";
@@ -16,14 +15,12 @@ const Header = () => {
   const [sidebar, setSideBar] = useState(false);
 
   const authContext = useContext(AuthContext);
-  const history = useHistory();
 
   const showSidebar = () => setSideBar(!sidebar);
 
   const logout = () => {
     localStorage.removeItem("token");
     authContext.setLoggedIn(false);
-    history.push("/login");
   };
 
   return (

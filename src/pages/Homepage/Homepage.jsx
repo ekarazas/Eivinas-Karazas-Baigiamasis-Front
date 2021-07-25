@@ -7,9 +7,9 @@ import MainButton from "../../components/MainButton/MainButton";
 
 const Homepage = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
-  useEffect(() => {
-    displayHeaderContext.setDisplay(false);
-  });
+    useEffect(() => {
+      displayHeaderContext.setDisplay(false);
+    }, [displayHeaderContext]);
   return (
     <>
       <S.GlobalStyle />

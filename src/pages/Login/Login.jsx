@@ -17,11 +17,13 @@ const Login = () => {
 
   useEffect(() => {
     displayHeaderContext.setDisplay(false);
+  }, [displayHeaderContext]);
 
-    if (authContext.loggedIn) {
+  useEffect(() => {
+    if (!authContext.loggedInLoading && authContext.loggedIn) {
       history.push("/dashboard");
     }
-  });
+  }, [authContext.loggedIn, authContext.loggedInLoading, history]);
 
   const userValidation = (e) => {
     e.preventDefault();
@@ -57,7 +59,6 @@ const Login = () => {
         if (data.token) {
           localStorage.setItem("token", data.token);
           authContext.setLoggedIn(true);
-          history.push("/dashboard");
         } else {
           alert(data.error);
         }

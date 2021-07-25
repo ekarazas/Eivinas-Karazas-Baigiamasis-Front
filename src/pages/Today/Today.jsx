@@ -10,11 +10,13 @@ const Today = () => {
 
   useEffect(() => {
     displayHeaderContext.setDisplay(true);
-  });
+  }, [displayHeaderContext]);
 
-  if (!authContext.loggedIn) {
-    history.push("/login");
-  }
+  useEffect(() => {
+    if (!authContext.loggedInLoading && !authContext.loggedIn) {
+      history.push("/login");
+    }
+  }, [authContext.loggedIn, authContext.loggedInLoading, history]);
 
   return (
     <>

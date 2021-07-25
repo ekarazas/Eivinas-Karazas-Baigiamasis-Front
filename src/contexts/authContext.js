@@ -4,15 +4,19 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedInLoading, setLoggedInLoading] = useState(true);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setLoggedIn(true);
     }
-  }, [loggedIn]);
+    setLoggedInLoading(false);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>
+    <AuthContext.Provider
+      value={{ loggedIn, setLoggedIn, loggedInLoading, setLoggedInLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import * as Yup from "yup";
 import * as S from "./Register.style";
 import { useHistory } from "react-router-dom";
@@ -10,8 +10,10 @@ import StyledLink from "../../components/StyledLink/StyledLink";
 
 const Register = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
-  displayHeaderContext.setDisplay(false);
-  
+  useEffect(() => {
+    displayHeaderContext.setDisplay(false);
+  }, [displayHeaderContext]);
+
   const history = useHistory();
 
   const userValidation = (e) => {

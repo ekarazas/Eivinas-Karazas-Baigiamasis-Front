@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import * as S from "./Homepage.style";
 import Logo from "../../assets/images/Tasky.png";
+import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
+
 import MainButton from "../../components/MainButton/MainButton";
 
 const Homepage = () => {
+  const displayHeaderContext = useContext(DisplayHeaderContext);
+  useEffect(() => {
+    displayHeaderContext.setDisplay(false);
+  });
   return (
     <>
       <S.GlobalStyle />

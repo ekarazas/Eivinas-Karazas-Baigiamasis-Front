@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import * as Yup from "yup";
 import * as S from "./Login.style";
 import { useHistory } from "react-router-dom";
+import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
+import { AuthContext } from "../../contexts/authContext";
 
 import Form from "../../components/Form/Form";
 import Container from "../../components/Container/Container";
 import StyledLink from "../../components/StyledLink/StyledLink";
 
 const Login = () => {
+  const displayHeaderContext = useContext(DisplayHeaderContext);
+  const authContext = useContext(AuthContext);
+
   const history = useHistory();
+
+  useEffect(() => {
+    displayHeaderContext.setDisplay(false);
+
+    if (authContext.loggedIn) {
+      history.push("/dashboard");
+    }
+  });
 
   const userValidation = (e) => {
     e.preventDefault();
@@ -43,6 +56,7 @@ const Login = () => {
       .then((data) => {
         if (data.token) {
           localStorage.setItem("token", data.token);
+          authContext.setLoggedIn(true);
           history.push("/dashboard");
         } else {
           alert(data.error);

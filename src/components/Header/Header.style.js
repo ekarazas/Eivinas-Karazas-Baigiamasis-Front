@@ -18,11 +18,6 @@ export const StyledLink = styled(Link)`
     background: transparent;
   }
 
-  &.menu-bars:hover .icon {
-    filter: invert(52%) sepia(52%) saturate(536%) hue-rotate(120deg)
-      brightness(86%) contrast(93%);
-  }
-
   &.logo {
     display: none;
     padding: 0.5rem;
@@ -35,6 +30,13 @@ export const StyledLink = styled(Link)`
       left: 50%;
       transform: translateX(-50%);
       display: block;
+    }
+  }
+
+  @media only screen and (min-width: 785px) {
+    &.menu-bars:hover .icon {
+      filter: invert(52%) sepia(52%) saturate(536%) hue-rotate(120deg)
+        brightness(86%) contrast(93%);
     }
   }
 `;
@@ -99,6 +101,12 @@ export const StyledListItem = styled.li`
 
   &.nav-text a:hover {
     background-color: #239985;
+  }
+
+  &.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   @media only screen and (min-width: 785px) {

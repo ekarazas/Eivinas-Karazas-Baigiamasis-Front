@@ -4,7 +4,7 @@ import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
 import { AuthContext } from "../../contexts/authContext";
 import { useHistory } from "react-router-dom";
 
-const Dashboard = () => {
+const Planned = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
   const authContext = useContext(AuthContext);
   const history = useHistory();
@@ -19,9 +19,9 @@ const Dashboard = () => {
 
   return (
     <>
-      <div>Dashboard</div>
+      <div>Planned</div>
     </>
   );
 };
 
-export default Dashboard;
+export default Planned;

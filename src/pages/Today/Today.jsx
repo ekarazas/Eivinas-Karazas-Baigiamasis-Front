@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from "react";
-
 import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
 import { AuthContext } from "../../contexts/authContext";
 import { useHistory } from "react-router-dom";
 
-const Dashboard = () => {
+const Today = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
   const authContext = useContext(AuthContext);
   const history = useHistory();
@@ -19,9 +18,9 @@ const Dashboard = () => {
 
   return (
     <>
-      <div>Dashboard</div>
+      <div>Today</div>
     </>
   );
 };
 
-export default Dashboard;
+export default Today;

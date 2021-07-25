@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as Yup from "yup";
 import * as S from "./Register.style";
 import { useHistory } from "react-router-dom";
+import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
 
 import Form from "../../components/Form/Form";
 import Container from "../../components/Container/Container";
 import StyledLink from "../../components/StyledLink/StyledLink";
 
 const Register = () => {
+  const displayHeaderContext = useContext(DisplayHeaderContext);
+  displayHeaderContext.setDisplay(false);
+  
   const history = useHistory();
 
   const userValidation = (e) => {

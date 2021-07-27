@@ -1,20 +1,20 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as Yup from "yup";
 import * as S from "./Register.style";
-import { useHistory } from "react-router-dom";
 import { DisplayHeaderContext } from "../../contexts/displayHeaderContext";
 
 import Form from "../../components/Form/Form";
 import Container from "../../components/Container/Container";
 import StyledLink from "../../components/StyledLink/StyledLink";
+import Notification from "../../components/Notification/Notification";
 
 const Register = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
+  const [notification, setNotification] = useState();
+
   useEffect(() => {
     displayHeaderContext.setDisplay(false);
   }, [displayHeaderContext]);
-
-  const history = useHistory();
 
   const userValidation = (e) => {
     e.preventDefault();
@@ -32,10 +32,15 @@ const Register = () => {
       schema.isValid({ firstname, email, password }).then((data) => {
         if (data) {
           userFetch(firstname, email, password);
-        } else alert("This data is not valid");
+        } else {
+          setNotification({
+            type: "danger",
+            text: "Incorrect email or password",
+          });
+        }
       });
     } else {
-      alert("Do not leave blank inputs. Write your name, email and password");
+      setNotification({ type: "danger", text: "Don't leave blank inputs" });
     }
   };
 
@@ -50,13 +55,18 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.message) {
-          alert(data.message);
-          history.push("/login");
+          setNotification({ type: "success", text: data.message });
         } else {
-          alert(data.error);
+          setNotification({ type: "danger", text: data.error });
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setNotification({
+          type: "danger",
+          text: "Something went wrong. Please try again later",
+        });
+      });
   };
 
   return (
@@ -64,6 +74,11 @@ const Register = () => {
       <S.GlobalStyle />
       <S.Register>
         <Container>
+          {notification && (
+            <Notification type={notification.type}>
+              {notification.text}
+            </Notification>
+          )}
           <div className="linksContainer">
             <StyledLink to="/login">Login</StyledLink>
             <StyledLink to="/register">Register</StyledLink>

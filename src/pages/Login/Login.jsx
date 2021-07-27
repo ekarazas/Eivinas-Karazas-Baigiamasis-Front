@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import * as Yup from "yup";
 import * as S from "./Login.style";
 import { useHistory } from "react-router-dom";
@@ -8,11 +8,12 @@ import { AuthContext } from "../../contexts/authContext";
 import Form from "../../components/Form/Form";
 import Container from "../../components/Container/Container";
 import StyledLink from "../../components/StyledLink/StyledLink";
+import Notification from "../../components/Notification/Notification";
 
 const Login = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
   const authContext = useContext(AuthContext);
-
+  const [notification, setNotification] = useState();
   const history = useHistory();
 
   useEffect(() => {
@@ -39,10 +40,15 @@ const Login = () => {
       schema.isValid({ email, password }).then((data) => {
         if (data) {
           userFetch(email, password);
-        } else alert("This data is not valid");
+        } else {
+          setNotification({
+            type: "danger",
+            text: "Incorrect email or password",
+          });
+        }
       });
     } else {
-      alert("Do not leave blank inputs. Write your email and password");
+      setNotification({ type: "danger", text: "Don't leave blank inputs" });
     }
   };
 
@@ -60,10 +66,17 @@ const Login = () => {
           localStorage.setItem("token", data.token);
           authContext.setLoggedIn(true);
         } else {
-          alert(data.error);
+          console.log(data.error);
+          setNotification({ type: "danger", text: data.error });
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setNotification({
+          type: "danger",
+          text: "Something went wrong. Please try again later",
+        });
+      });
   };
 
   return (
@@ -71,6 +84,11 @@ const Login = () => {
       <S.GlobalStyle />
       <S.Login>
         <Container>
+          {notification && (
+            <Notification type={notification.type}>
+              {notification.text}
+            </Notification>
+          )}
           <div className="linksContainer">
             <StyledLink to="/login">Login</StyledLink>
             <StyledLink to="/register">Register</StyledLink>

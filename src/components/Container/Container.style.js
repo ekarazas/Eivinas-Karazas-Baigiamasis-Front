@@ -22,7 +22,7 @@ export const Container = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   padding: 0.5rem;
 `;
 

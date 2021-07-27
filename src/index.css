@@ -3,5 +3,17 @@ body {
 }
 
 .linksContainer {
+  margin-top: 1.5rem;
   margin-bottom: 2rem;
+}
+
+.center-loading {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

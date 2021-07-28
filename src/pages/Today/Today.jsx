@@ -12,6 +12,8 @@ const Today = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
   const authContext = useContext(AuthContext);
   const history = useHistory();
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
 
   const [todos, setTodos] = useState([]);
   const [message, setMessage] = useState("");
@@ -21,7 +23,7 @@ const Today = () => {
     setTodos([]);
     setIsLoading(true);
     const token = localStorage.getItem("token");
-    fetch("http://localhost:8080/v1/todos/today", {
+    fetch(`${url}/v1/todos/today`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,7 +42,7 @@ const Today = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     displayHeaderContext.setDisplay(true);

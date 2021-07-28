@@ -7,6 +7,8 @@ import Notification from "../../components/Notification/Notification";
 
 const AddForm = ({ inputText, setInputText, todos, setTodos }) => {
   const [notification, setNotification] = useState("");
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
 
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
@@ -48,7 +50,7 @@ const AddForm = ({ inputText, setInputText, todos, setTodos }) => {
   const addTask = (title) => {
     const token = localStorage.getItem("token");
 
-    fetch("http://localhost:8080/v1/todos/add-todo", {
+    fetch(`${url}/v1/todos/add-todo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -105,6 +107,13 @@ const AddForm = ({ inputText, setInputText, todos, setTodos }) => {
       </form>
     </>
   );
+};
+
+AddForm.propTypes = {
+  inputText: PropTypes.string.isRequired,
+  setInputText: PropTypes.func.isRequired,
+  todos: PropTypes.array.isRequired,
+  setTodos: PropTypes.func.isRequired,
 };
 
 export default AddForm;

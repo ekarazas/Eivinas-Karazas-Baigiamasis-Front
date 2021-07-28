@@ -11,6 +11,8 @@ import Notification from "../../components/Notification/Notification";
 const Register = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
   const [notification, setNotification] = useState("");
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
 
   useEffect(() => {
     displayHeaderContext.setDisplay(false);
@@ -45,7 +47,7 @@ const Register = () => {
   };
 
   const userFetch = (firstname, email, password) => {
-    fetch("http://localhost:8080/v1/auth/register", {
+    fetch(`${url}/v1/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

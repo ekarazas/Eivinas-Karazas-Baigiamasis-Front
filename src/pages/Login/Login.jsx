@@ -15,6 +15,8 @@ const Login = () => {
   const authContext = useContext(AuthContext);
   const [notification, setNotification] = useState("");
   const history = useHistory();
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
 
   useEffect(() => {
     displayHeaderContext.setDisplay(false);
@@ -53,7 +55,7 @@ const Login = () => {
   };
 
   const userFetch = (email, password) => {
-    fetch("http://localhost:8080/v1/auth/login", {
+    fetch(`${url}/v1/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

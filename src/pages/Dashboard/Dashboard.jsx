@@ -14,6 +14,8 @@ const Dashboard = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
   const authContext = useContext(AuthContext);
   const history = useHistory();
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
 
   const [todos, setTodos] = useState([]);
   const [message, setMessage] = useState("");
@@ -24,7 +26,7 @@ const Dashboard = () => {
     setTodos([]);
     setIsLoading(true);
     const token = localStorage.getItem("token");
-    fetch("http://localhost:8080/v1/todos/all-todos", {
+    fetch(`${url}/v1/todos/all-todos`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -44,7 +46,7 @@ const Dashboard = () => {
         console.log(error);
         setMessage(error);
       });
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     displayHeaderContext.setDisplay(true);

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import * as S from "./TodoList.style";
 
 const TodoList = ({ children }) => {
@@ -9,11 +8,5 @@ const TodoList = ({ children }) => {
     </>
   );
 };
-
-TodoList.propTypes = {
-  //   children: PropTypes.string.isRequired,
-};
-
-TodoList.defaultProps = {};
 
 export default TodoList;

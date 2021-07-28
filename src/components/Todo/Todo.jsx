@@ -11,11 +11,13 @@ const Todo = ({ id, complete, title, due_date, important }) => {
   const token = localStorage.getItem("token");
   const [importantState, setImportantState] = useState(important);
   const [completeState, setCompleteState] = useState(complete);
+  const url =
+    process.env.REACT_APP_SERVER_URL || process.env.REACT_APP_LOCALHOST;
 
   // Handle Click Events
   const makeComplete = () => {
     setCompleteState(1);
-    fetch("http://localhost:8080/v1/todos/set-complete", {
+    fetch(`${url}/v1/todos/set-complete`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +36,7 @@ const Todo = ({ id, complete, title, due_date, important }) => {
 
   const unmakeComplete = () => {
     setCompleteState(0);
-    fetch("http://localhost:8080/v1/todos/unset-complete", {
+    fetch(`${url}/v1/todos/unset-complete`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +55,7 @@ const Todo = ({ id, complete, title, due_date, important }) => {
 
   const unmakeImportant = () => {
     setImportantState(0);
-    fetch("http://localhost:8080/v1/todos/unset-important", {
+    fetch(`${url}/v1/todos/unset-important`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +74,7 @@ const Todo = ({ id, complete, title, due_date, important }) => {
 
   const makeImportant = () => {
     setImportantState(1);
-    fetch("http://localhost:8080/v1/todos/set-important", {
+    fetch(`${url}/v1/todos/set-important`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

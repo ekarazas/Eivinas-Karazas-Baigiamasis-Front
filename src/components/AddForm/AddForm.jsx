@@ -24,10 +24,12 @@ const AddForm = ({ inputText, setInputText, todos, setTodos }) => {
       schema.isValid({ title }).then((data) => {
         if (data) {
           addTask(title);
-          console.log(todos[todos.length - 1].id);
           setTodos([
             ...todos,
-            { title: inputText, id: todos[todos.length - 1].id + 1 || 1 },
+            {
+              title: inputText,
+              id: todos.length !== 0 ? todos[todos.length - 1].id + 1 : 1,
+            },
           ]);
           setInputText("");
         } else {

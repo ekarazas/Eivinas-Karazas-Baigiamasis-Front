@@ -5,8 +5,12 @@ import PropTypes from "prop-types";
 
 import Notification from "../../components/Notification/Notification";
 
-const AddForm = ({ setInputText }) => {
+const AddForm = ({ inputText, setInputText, todos, setTodos }) => {
   const [notification, setNotification] = useState("");
+
+  const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+  };
 
   const taskValidation = (e) => {
     e.preventDefault();
@@ -20,6 +24,12 @@ const AddForm = ({ setInputText }) => {
       schema.isValid({ title }).then((data) => {
         if (data) {
           addTask(title);
+          console.log(todos[todos.length - 1].id);
+          setTodos([
+            ...todos,
+            { title: inputText, id: todos[todos.length - 1].id + 1 || 1 },
+          ]);
+          setInputText("");
         } else {
           console.log(data);
           setNotification({
@@ -52,7 +62,6 @@ const AddForm = ({ setInputText }) => {
             type: "success",
             text: data.message,
           });
-          setInputText(title);
         } else {
           setNotification({
             type: "danger",
@@ -67,8 +76,6 @@ const AddForm = ({ setInputText }) => {
           text: "Something went wrong. Please try again later",
         });
       });
-
-    setInputText("");
   };
 
   const unset = () => {
@@ -84,6 +91,8 @@ const AddForm = ({ setInputText }) => {
           </Notification>
         )}
         <S.Input
+          onChange={inputTextHandler}
+          value={inputText}
           type="text"
           name="title"
           minLength="2"
@@ -94,10 +103,6 @@ const AddForm = ({ setInputText }) => {
       </form>
     </>
   );
-};
-
-AddForm.propTypes = {
-  setInputText: PropTypes.string,
 };
 
 export default AddForm;

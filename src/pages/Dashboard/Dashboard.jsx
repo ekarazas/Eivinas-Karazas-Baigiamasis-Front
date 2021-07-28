@@ -8,6 +8,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 import Wrapper from "../../components/Wrapper/Wrapper";
 import Todo from "../../components/Todo/Todo";
 import AddForm from "../../components/AddForm/AddForm";
+import TodoList from "../../components/TodoList/TodoList";
 
 const Dashboard = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
@@ -35,7 +36,7 @@ const Dashboard = () => {
         } else if (data.error) {
           setMessage(data.error);
         } else {
-          setTodos(data.reverse());
+          setTodos(data);
         }
         setIsLoading(false);
       })
@@ -67,9 +68,13 @@ const Dashboard = () => {
             </div>
           ) : (
             <>
-              <AddForm setInputText={setInputText} />
-              <S.StyledList>
-                {inputText && <Todo title={inputText} id={4}></Todo>}
+              <AddForm
+                inputText={inputText}
+                setInputText={setInputText}
+                todos={todos}
+                setTodos={setTodos}
+              />
+              <TodoList>
                 {todos.length !== 0 ? (
                   todos.map((todo) => (
                     <Todo
@@ -84,7 +89,7 @@ const Dashboard = () => {
                 ) : (
                   <S.StyledListItem>{message}</S.StyledListItem>
                 )}
-              </S.StyledList>
+              </TodoList>
             </>
           )}
         </S.Dashboard>

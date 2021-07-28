@@ -30,6 +30,8 @@ const Important = () => {
       .then((data) => {
         if (data.message) {
           setMessage(data.message);
+        } else if (data.error) {
+          setMessage(data.error);
         } else {
           setTodos(data);
         }
@@ -63,16 +65,18 @@ const Important = () => {
           ) : (
             <S.StyledList>
               {todos.length !== 0 ? (
-                todos.map((todo) => (
-                  <Todo
-                    key={todo.id}
-                    id={todo.id}
-                    complete={todo.complete}
-                    title={todo.title}
-                    due_date={todo.due_date}
-                    important={todo.important}
-                  ></Todo>
-                ))
+                todos
+                  .reverse()
+                  .map((todo) => (
+                    <Todo
+                      key={todo.id}
+                      id={todo.id}
+                      complete={todo.complete}
+                      title={todo.title}
+                      due_date={todo.due_date}
+                      important={todo.important}
+                    ></Todo>
+                  ))
               ) : (
                 <S.StyledListItem>{message}</S.StyledListItem>
               )}

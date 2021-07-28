@@ -30,6 +30,8 @@ const Today = () => {
       .then((data) => {
         if (data.message) {
           setMessage(data.message);
+        } else if (data.error) {
+          setMessage(data.error);
         } else {
           setTodos(data);
         }

@@ -10,7 +10,7 @@ import Notification from "../../components/Notification/Notification";
 
 const Register = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
-  const [notification, setNotification] = useState();
+  const [notification, setNotification] = useState("");
 
   useEffect(() => {
     displayHeaderContext.setDisplay(false);

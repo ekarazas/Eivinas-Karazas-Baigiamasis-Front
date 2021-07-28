@@ -7,6 +7,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 
 import Wrapper from "../../components/Wrapper/Wrapper";
 import Todo from "../../components/Todo/Todo";
+import AddForm from "../../components/AddForm/AddForm";
 
 const Dashboard = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
@@ -15,6 +16,7 @@ const Dashboard = () => {
 
   const [todos, setTodos] = useState([]);
   const [message, setMessage] = useState("");
+  const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -30,13 +32,16 @@ const Dashboard = () => {
       .then((data) => {
         if (data.message) {
           setMessage(data.message);
+        } else if (data.error) {
+          setMessage(data.error);
         } else {
-          setTodos(data);
+          setTodos(data.reverse());
         }
         setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setMessage(error);
       });
   }, []);
 
@@ -61,22 +66,26 @@ const Dashboard = () => {
               <PulseLoader color={"#239985"} loading={isLoading} size={30} />
             </div>
           ) : (
-            <S.StyledList>
-              {todos.length !== 0 ? (
-                todos.map((todo) => (
-                  <Todo
-                    key={todo.id}
-                    id={todo.id}
-                    complete={todo.complete}
-                    title={todo.title}
-                    due_date={todo.due_date}
-                    important={todo.important}
-                  ></Todo>
-                ))
-              ) : (
-                <S.StyledListItem>{message}</S.StyledListItem>
-              )}
-            </S.StyledList>
+            <>
+              <AddForm setInputText={setInputText} />
+              <S.StyledList>
+                {inputText && <Todo title={inputText} id={4}></Todo>}
+                {todos.length !== 0 ? (
+                  todos.map((todo) => (
+                    <Todo
+                      key={todo.id}
+                      id={todo.id}
+                      complete={todo.complete}
+                      title={todo.title}
+                      due_date={todo.due_date}
+                      important={todo.important}
+                    ></Todo>
+                  ))
+                ) : (
+                  <S.StyledListItem>{message}</S.StyledListItem>
+                )}
+              </S.StyledList>
+            </>
           )}
         </S.Dashboard>
       </Wrapper>

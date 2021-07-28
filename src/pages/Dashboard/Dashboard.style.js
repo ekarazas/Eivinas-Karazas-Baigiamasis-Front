@@ -15,6 +15,7 @@ export const Dashboard = styled.main`
 
 export const PageTitle = styled.h2`
   margin: 0;
+  margin-bottom: 1rem;
 `;
 
 export const StyledList = styled.ul`

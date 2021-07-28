@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <>
       {displayHeaderContext.display && (
-        <IconContext.Provider value={{ color: "f3f3f3", className: "icon" }}>
+        <IconContext.Provider value={{ color: "f3f3f3", className: "icon", size: "20px" }}>
           <S.Header>
             <S.Bars>
               <S.StyledLink to="#" className="menu-bars">

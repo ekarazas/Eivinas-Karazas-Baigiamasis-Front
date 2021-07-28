@@ -116,7 +116,7 @@ const Todo = ({ id, complete, title, due_date, important }) => {
               {completeState === 1 && <S.Completed>Completed</S.Completed>}
             </S.FlexContainer>
             {due_date && (
-              <S.Date>
+              <S.Date className={completeState === 1 ? "washed" : ""}>
                 Due {due_date && due_date.split("").splice(0, 10).join("")}
               </S.Date>
             )}

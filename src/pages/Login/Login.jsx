@@ -13,7 +13,7 @@ import Notification from "../../components/Notification/Notification";
 const Login = () => {
   const displayHeaderContext = useContext(DisplayHeaderContext);
   const authContext = useContext(AuthContext);
-  const [notification, setNotification] = useState();
+  const [notification, setNotification] = useState("");
   const history = useHistory();
 
   useEffect(() => {

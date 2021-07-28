@@ -23,6 +23,9 @@ export const Title = styled.h4`
   margin: 0;
   display: flex;
   align-items: center;
+  word-break: break-all;
+  line-break: strict;
+  hyphens: auto;
 
   &.crossed {
     color: #ddd;
@@ -38,4 +41,12 @@ export const Completed = styled.div`
 
 export const Date = styled.div`
   color: #aaa;
+
+  &.washed {
+    color: #eee;
+  }
+
+  &.red {
+    color: red;
+  }
 `;

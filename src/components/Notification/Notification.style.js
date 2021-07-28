@@ -7,6 +7,7 @@ export const StyledNotification = styled.div`
   color: rgb(250, 250, 250);
   margin: 0 0 1rem 0;
   position: relative;
+  line-break: auto;
 `;
 
 export const CloseButton = styled.button`

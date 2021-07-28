@@ -76,6 +76,7 @@ const Register = () => {
         setNotification({
           type: "danger",
           text: "Something went wrong. Please try again later",
+          unset: unset,
         });
       });
   };
@@ -90,7 +91,7 @@ const Register = () => {
       <S.Register>
         <Container>
           {notification && (
-            <Notification type={notification.type}>
+            <Notification type={notification.type} unset={unset}>
               {notification.text}
             </Notification>
           )}

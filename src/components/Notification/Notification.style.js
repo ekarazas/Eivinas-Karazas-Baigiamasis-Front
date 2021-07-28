@@ -13,6 +13,7 @@ export const CloseButton = styled.button`
   background: #f3f3f3;
   border: 0;
   border-radius: 50%;
+  cursor: pointer;
   color: #333;
   position: absolute;
   right: 1rem;

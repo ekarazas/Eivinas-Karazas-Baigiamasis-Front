@@ -38,11 +38,16 @@ const Register = () => {
           setNotification({
             type: "danger",
             text: "Incorrect email or password",
+            unset: unset,
           });
         }
       });
     } else {
-      setNotification({ type: "danger", text: "Don't leave blank inputs" });
+      setNotification({
+        type: "danger",
+        text: "Don't leave blank inputs",
+        unset: unset,
+      });
     }
   };
 
@@ -57,9 +62,13 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.message) {
-          setNotification({ type: "success", text: data.message });
+          setNotification({
+            type: "success",
+            text: data.message,
+            unset: unset,
+          });
         } else {
-          setNotification({ type: "danger", text: data.error });
+          setNotification({ type: "danger", text: data.error, unset: unset });
         }
       })
       .catch((error) => {
@@ -69,6 +78,10 @@ const Register = () => {
           text: "Something went wrong. Please try again later",
         });
       });
+  };
+
+  const unset = () => {
+    setNotification("");
   };
 
   return (

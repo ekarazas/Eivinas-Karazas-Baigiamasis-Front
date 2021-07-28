@@ -46,11 +46,16 @@ const Login = () => {
           setNotification({
             type: "danger",
             text: "Incorrect email or password",
+            unset: unset,
           });
         }
       });
     } else {
-      setNotification({ type: "danger", text: "Don't leave blank inputs" });
+      setNotification({
+        type: "danger",
+        text: "Don't leave blank inputs",
+        unset: unset,
+      });
     }
   };
 
@@ -69,7 +74,7 @@ const Login = () => {
           authContext.setLoggedIn(true);
         } else {
           console.log(data.error);
-          setNotification({ type: "danger", text: data.error });
+          setNotification({ type: "danger", text: data.error, unset: unset });
         }
       })
       .catch((error) => {
@@ -77,8 +82,13 @@ const Login = () => {
         setNotification({
           type: "danger",
           text: "Something went wrong. Please try again later",
+          unset: unset,
         });
       });
+  };
+
+  const unset = () => {
+    setNotification("");
   };
 
   return (
@@ -87,7 +97,7 @@ const Login = () => {
       <S.Login>
         <Container>
           {notification && (
-            <Notification type={notification.type}>
+            <Notification unset={unset} type={notification.type}>
               {notification.text}
             </Notification>
           )}

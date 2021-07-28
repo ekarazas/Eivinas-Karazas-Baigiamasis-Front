@@ -102,7 +102,14 @@ const Todo = ({ id, complete, title, due_date, important }) => {
               className: "icon",
             }}
           >
-            <CompleteButton className={completeState === 1 ? "active" : ""}>
+            <CompleteButton
+              className={completeState === 1 ? "active" : ""}
+              title={
+                completeState === 1
+                  ? "Mark as not completed"
+                  : "Mark as completed"
+              }
+            >
               {completeState === 1 ? (
                 <AiIcons.AiOutlineClose onClick={unmakeComplete} />
               ) : (
@@ -132,7 +139,14 @@ const Todo = ({ id, complete, title, due_date, important }) => {
             className: "icon",
           }}
         >
-          <ImportantButton className="star">
+          <ImportantButton
+            className="star"
+            title={
+              importantState === 1
+                ? "Mark task as not important"
+                : "Mark task as important"
+            }
+          >
             {importantState === 1 ? (
               <AiIcons.AiFillStar
                 onClick={unmakeImportant}
